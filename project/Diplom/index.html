@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./dist/output.css" rel="stylesheet" />
+</head>
+
+<body class="flex flex-col items-center h-screen bg-gray-800">
+    <div>
+        <a class="flex justify-center" href="/">
+            <div class="text-white">Турнирленд</div>
+        </a>
+    </div>
+    <div class="container flex h-full">
+        <div class="bg-red-200 w-1/3 flex-grow">
+            <div class="flex justify-center">
+                <h1 class="text-3xl">Фильтры</h1>
+            </div>
+            <div>
+                <div id="filters" class="flex flex-wrap items-center gap-2 border border-red-300 py-2">
+                </div>
+                <div id="datefilters" class="flex flex-wrap items-center gap-2 border-b border-b-red-300 py-2">
+
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col w-2/3 bg-green-600 overflow-y-auto">
+            <div class="flex justify-center">
+                <h1 class="text-2xl w-10">Турниры</h1>
+            </div>
+            <div id="allitems" class="flex flex-col gap-2"></div>
+        </div>
+    </div>
+
+    <template id="item">
+        <a href="">
+            <div class="flex items-center mx-2 bg-white rounded-full">
+                <div class="flex flex-col items-center py-2 w-1/2">
+                    <p>ahaha</p>
+                    <p>ahaha</p>
+                    <p>ahaha</p>
+                    <p>ahaha</p>
+                </div>
+                <div id="site" class="flex justify-center w-1/2 text-4xl capitalize"></div>
+            </div>
+        </a>
+    </template>
+
+    <template id="filter">
+        <label class="flex gap-2 justify-center items-center bg-green-500 rounded-full px-1">
+            <input type="checkbox" />
+            uwu
+        </label>
+    </template>
+</body>
+
+<script type="module">
+    import data from "./result.json" assert { type: 'json'}
+    const allGamesArr = ["CS2", "VALORANT", "FORTNITE", "LEAGUE OF LEGENDS", "APEX", "МИР ТАНКОВ", "EA SPORTS", "HEARTHSTONE", "WARFACE", "DOTA 2"]
+    const allDatesArr = [];
+    data.forEach((item) => {
+        const date = (item.Date).split(" ")[0];
+        if (!allDatesArr.includes(date)) {
+            allDatesArr.push(date);
+        }
+    });
+
+    checkedsFilters();
+    function checkedsFilters() {
+        const allFilters = document.querySelectorAll(".filter");
+        const allDateFilters = document.querySelectorAll(".datefilter");
+        console.log(allDateFilters)
+        console.log(allFilters)
+        const arr = [];
+        allFilters.forEach((item) => {
+            if (item.checked) {
+                arr.push(item.value);
+            }
+        });
+        allDateFilters.forEach((item) => {
+            if (item.checked) {
+                arr.push(item.value);
+            }
+        });
+        const allit = document.getElementById("allitems");
+        allit.innerHTML = "";
+        if (arr.length === 0) {
+            const el = document.getElementById("allitems");
+            const template = document.getElementById("item");
+            data.forEach((item) => {
+                const clone = template.content.cloneNode(true);
+                const div = clone.querySelector("div");
+                const a = clone.querySelector("a");
+                a.href = item.Link;
+                const allP = clone.querySelectorAll("p");
+                allP[0].textContent = item.Date;
+                allP[1].textContent = item.GameAndFormat;
+                allP[2].textContent = item.PrizeFund;
+                allP[3].textContent = item.StartTime;
+                const site = clone.getElementById("site");
+                site.textContent = item.Name;
+                el.appendChild(clone);
+            });
+        }
+        else {
+            const el = document.getElementById("allitems");
+            data.forEach((item) => {
+                arr.forEach((game) => {
+                    if ((item.GameAndFormat).includes(game) || (item.Date).includes(game)) {
+                        const template = document.getElementById("item");
+                        const clone = template.content.cloneNode(true);
+                        const div = clone.querySelector("div");
+                        const a = clone.querySelector("a");
+                        a.href = item.Link;
+                        const allP = clone.querySelectorAll("p");
+                        allP[0].textContent = item.Date;
+                        allP[1].textContent = item.GameAndFormat;
+                        allP[2].textContent = item.PrizeFund;
+                        allP[3].textContent = item.StartTime;
+                        const site = clone.getElementById("site");
+                        site.textContent = item.Name;
+                        el.appendChild(clone);
+                    }
+                });
+            });
+        }
+    }
+
+    function addFilter() {
+        const el = document.getElementById("filters");
+        const template = document.getElementById("filter");
+        allGamesArr.forEach((item) => {
+            const clone = template.content.cloneNode(true);
+            const input = clone.querySelector("input");
+            input.value = item;
+            input.classList.add("filter")
+            input.addEventListener("change", (e) => {
+                checkedsFilters();
+            });
+            const label = clone.querySelector("label");
+            label.innerHTML = item;
+            label.appendChild(input);
+            el.appendChild(clone);
+        });
+
+        allDatesArr.forEach((item) => {
+            const clone = template.content.cloneNode(true);
+            const input = clone.querySelector("input");
+            input.value = item;
+            input.classList.add("datefilter")
+            input.addEventListener("change", (e) => {
+                checkedsFilters();
+            });
+            const label = clone.querySelector("label");
+            label.innerHTML = item;
+            label.appendChild(input);
+            const el = document.getElementById("datefilters");
+            el.appendChild(clone);
+        });
+
+    }
+    addFilter();
+
+
+</script>
+<script>
+    //npx tailwindcss -i ./app.css -o ./dist/output.css --watch
+    function toggle() {
+        const el = document.getElementById("uwu");
+        if (el.style.display === "none") {
+            el.style.display = "flex";
+        } else {
+            el.style.display = "none";
+        }
+    }
+</script>
+
+</html>

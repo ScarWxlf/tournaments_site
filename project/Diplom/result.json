@@ -1,0 +1,218 @@
+[
+    {
+        "id": 1,
+        "Date": "01.12.2023 (Пятница)",
+        "GameAndFormat": "CS2 2×2 WINGMAN",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 17:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 2,
+        "Date": "02.12.2023 (Суббота)",
+        "GameAndFormat": "VALORANT 5×5 ДАЛЬНИЙ ВОСТОК",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 08:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 3,
+        "Date": "02.12.2023 (Суббота)",
+        "GameAndFormat": "FORTNITE DUO POINT CUP",
+        "PrizeFund": "Призовой фонд: 150 000 рублей",
+        "StartTime": "Начало турнира в 12:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 4,
+        "Date": "03.12.2023 (Воскресенье)",
+        "GameAndFormat": "LEAGUE OF LEGENDS 5×5",
+        "PrizeFund": "Призовой фонд: 60 000 рублей",
+        "StartTime": "Начало турнира в 13:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 5,
+        "Date": "03.12.2023 (Воскресенье)",
+        "GameAndFormat": "APEX DUO",
+        "PrizeFund": "Призовой фонд: 100 000 рублей",
+        "StartTime": "Начало турнира в 14:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 6,
+        "Date": "04.12.2023 (Понедельник)",
+        "GameAndFormat": "CS2 2×2 WINGMAN",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 17:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 7,
+        "Date": "09.12.2023 (Суббота)",
+        "GameAndFormat": "МИР ТАНКОВ — 1Х1",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 13:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 8,
+        "Date": "09.12.2023 (Суббота)",
+        "GameAndFormat": "CS2 MIX 5Х5 PARTY",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 15:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 9,
+        "Date": "10.12.2023 (Воскресенье)",
+        "GameAndFormat": "CS2 5×5 ДАЛЬНИЙ ВОСТОК",
+        "PrizeFund": "Призовой фонд: 50 000 рублей",
+        "StartTime": "Начало турнира в 08:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 10,
+        "Date": "10.12.2023 (Воскресенье)",
+        "GameAndFormat": "FORTNITE SOLO CUP",
+        "PrizeFund": "Призовой фонд: 75 000 рублей",
+        "StartTime": "Начало турнира в 12:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 11,
+        "Date": "12.12.2023 (Вторник)",
+        "GameAndFormat": "CS2 2×2 WINGMAN",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 17:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 12,
+        "Date": "16.12.2023 (Суббота)",
+        "GameAndFormat": "VALORANT 5×5",
+        "PrizeFund": "Призовой фонд: 150 000 рублей",
+        "StartTime": "Начало турнира в 13:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 13,
+        "Date": "16.12.2023 (Суббота)",
+        "GameAndFormat": "EA SPORTS FC 24 1Х1 ШЕЛЕПИХА",
+        "PrizeFund": "Призовой фонд: 100 000 рублей",
+        "StartTime": "Начало турнира в 14:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 14,
+        "Date": "16.12.2023 (Суббота)",
+        "GameAndFormat": "HEARTHSTONE BATTLEGROUNDS",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 15:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 15,
+        "Date": "17.12.2023 (Воскресенье)",
+        "GameAndFormat": "FORTNITE DUO POINT CUP",
+        "PrizeFund": "Призовой фонд: 150 000 рублей",
+        "StartTime": "Начало турнира в 12:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 16,
+        "Date": "17.12.2023 (Воскресенье)",
+        "GameAndFormat": "WARFACE — 5×5",
+        "PrizeFund": "Призовой фонд: 100 000 рублей",
+        "StartTime": "Начало турнира в 13:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 17,
+        "Date": "17.12.2023 (Воскресенье)",
+        "GameAndFormat": "МИР ТАНКОВ — СТАЛЬНОЙ ОХОТНИК",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 14:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 18,
+        "Date": "20.12.2023 (Среда)",
+        "GameAndFormat": "CS2 2×2 WINGMAN",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 17:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 19,
+        "Date": "23.12.2023 (Суббота)",
+        "GameAndFormat": "APEX TRIO",
+        "PrizeFund": "Призовой фонд: 150 000 рублей",
+        "StartTime": "Начало турнира в 14:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 20,
+        "Date": "23.12.2023 (Суббота)",
+        "GameAndFormat": "CS2 5×5",
+        "PrizeFund": "Призовой фонд: 200 000 рублей",
+        "StartTime": "Начало турнира в 12:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 21,
+        "Date": "24.12.2023 (Воскресенье)",
+        "GameAndFormat": "CS2 2×2 WINGMAN ДАЛЬНИЙ ВОСТОК",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 08:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 22,
+        "Date": "24.12.2023 (Воскресенье)",
+        "GameAndFormat": "FORTNITE SOLO POINT CUP",
+        "PrizeFund": "Призовой фонд: 100 000 рублей",
+        "StartTime": "Начало турнира в 12:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 23,
+        "Date": "24.12.2023 (Воскресенье)",
+        "GameAndFormat": "DOTA 2 5×5",
+        "PrizeFund": "Призовой фонд: 175 000 рублей",
+        "StartTime": "Начало турнира в 12:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    },
+    {
+        "id": 24,
+        "Date": "28.12.2023 (Четверг)",
+        "GameAndFormat": "CS2 2×2 WINGMAN",
+        "PrizeFund": "Призовой фонд: 40 000 рублей",
+        "StartTime": "Начало турнира в 17:00 по московскому времени",
+        "Link": "https://colizeumarena.com/academy/",
+        "Name": "colizeumarena"
+    }
+]

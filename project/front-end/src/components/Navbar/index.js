@@ -1,0 +1,187 @@
+import React from "react";
+import {
+  Navbar,
+  MobileNav,
+  Typography,
+  Button,
+  IconButton,
+} from "@material-tailwind/react";
+import { Outlet } from "react-router-dom";
+
+export default function NavbarDefault() {
+  const [openNav, setOpenNav] = React.useState(false);
+  const userID = true;
+
+  const navList = (
+    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-globe-americas"
+          viewBox="0 0 16 16"
+        >
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
+        </svg>
+        <a href="/map" className="flex items-center">
+          Карта
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-calendar-date"
+          viewBox="0 0 16 16"
+        >
+          <path d="M6.445 11.688V6.354h-.633A13 13 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23" />
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+        </svg>
+        <a href="/tournaments" className="flex items-center">
+          Турниры
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-chat-dots-fill"
+          viewBox="0 0 16 16"
+        >
+          <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+        </svg>
+        <a href="/tournaments" className="flex items-center">
+          Форум
+        </a>
+      </Typography>
+    </ul>
+  );
+
+  return (
+    <>
+      <Navbar className="mx-auto max-w-screen-xxl rounded-none border-none bg-black text-white px-4 py-2 lg:px-8 lg:py-4">
+        <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+          <Typography
+            as="a"
+            href="/"
+            className="mr-4 cursor-pointer py-1.5 font-medium px-10 text-red-600"
+          >
+            T<span className="text-white">o</span>ur
+            <span className="text-white">n</span>am
+            <span className="text-white">e</span>nts
+          </Typography>
+          {userID ? (
+            <div className="hidden lg:block">{navList}</div>
+          ) : (
+            <>
+              <div className="flex items-center gap-x-1">
+                {/* {auth ? (
+            <Button>
+              <span>Profile</span>
+            </Button>
+          ):( */}
+                <a href="/sign-up">
+                  <Button
+                    variant="gradient"
+                    size="sm"
+                    className="hidden lg:inline-block"
+                  >
+                    <span>Sign up</span>
+                  </Button>
+                </a>
+                <a href="/sign-in">
+                  <Button
+                    variant="gradient"
+                    size="sm"
+                    className="hidden lg:inline-block"
+                  >
+                    <span>Sign in</span>
+                  </Button>
+                </a>
+              </div>
+            </>
+          )}
+          <IconButton
+            variant="text"
+            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+            ripple={false}
+            onClick={() => setOpenNav(!openNav)}
+          >
+            {openNav ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                className="h-6 w-6"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </IconButton>
+        </div>
+        <MobileNav open={openNav}>
+          <div className="container mx-auto">
+            {userID ? (
+              navList
+            ) : (
+              <div className="flex items-center gap-x-1">
+                <a href="/sign-up">
+                  <Button fullWidth variant="text" size="sm" className="">
+                    <span>Sign up</span>
+                  </Button>
+                </a>
+                <a href="/sign-in">
+                  <Button fullWidth variant="gradient" size="sm" className="">
+                    <span>Sign in</span>
+                  </Button>
+                </a>
+              </div>
+            )}
+          </div>
+        </MobileNav>
+      </Navbar>
+      <Outlet />
+    </>
+  );
+}
