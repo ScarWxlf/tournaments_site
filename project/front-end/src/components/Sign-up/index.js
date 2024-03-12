@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 //import { Auth } from "./isauth";
 import {useNavigate} from "react-router-dom";
+import image from "../../assets/06.jpg";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -23,27 +24,26 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const userData = {
-      id: Math.floor(Math.random() * 100000000),
       username: data.username,
       password: data.password,
     };
-    //http://ec2-13-53-121-204.eu-north-1.compute.amazonaws.com/api/register or /api/register
     axios
       .post(
-        "http://localhost:3004/users",
+        "http://localhost:3004/register",
         userData,
       )
       .then((response) => {
-        console.log(response.data);
-        navigate("/sign-in");
+        localStorage.setItem("user", response.data[0].id);
+        navigate("/");
+        window.location.reload();
       });
   };
 
   return (
-    <div className="flex flex-grow items-center justify-center ">
+    <div className="flex flex-grow items-center justify-center " style={{ backgroundImage: `url(${image})` }}>
       <div className="container items-center flex flex-col mb-32">
         <form
-          className="flex flex-col justify-center items-center gap-8 py-4 px-8 border-black border-2 rounded-md border-opacity-20"
+          className="flex flex-col justify-center items-center bg-white gap-8 py-4 px-8 border-black border-2 rounded-md border-opacity-20"
           onSubmit={handleSubmit}
         >
           <h1>Register</h1>

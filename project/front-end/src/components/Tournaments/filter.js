@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 //import data from "../db/data";
 // import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import data from "../../result.json";
@@ -24,12 +24,11 @@ function Filter() {
     }
   });
 
+  const [renderData, setRenderData] = useState(data);
 
   function checkedsFilters() {
     const allFilters = document.querySelectorAll(".filter");
     const allDateFilters = document.querySelectorAll(".datefilter");
-    // console.log(allDateFilters);
-    // console.log(allFilters);
     const arr = [];
     allFilters.forEach((item) => {
       if (item.checked) {
@@ -41,44 +40,14 @@ function Filter() {
         arr.push(item.value);
       }
     });
-    const allit = document.getElementById("allitems");
-    console.log(allit)
-    allit.innerHTML = "";
+    setRenderData([]);
     if (arr.length === 0) {
-      const el = document.getElementById("allitems");
-      const template = document.getElementById("item");
-      data.forEach((item) => {
-        const clone = template.content.cloneNode(true);
-        const div = clone.querySelector("div");
-        const a = clone.querySelector("a");
-        a.href = item.Link;
-        const allP = clone.querySelectorAll("p");
-        allP[0].textContent = item.Date;
-        allP[1].textContent = item.GameAndFormat;
-        allP[2].textContent = item.PrizeFund;
-        allP[3].textContent = item.StartTime;
-        const site = clone.getElementById("site");
-        site.textContent = item.Name;
-        el.appendChild(clone);
-      });
+      setRenderData(data);
     } else {
-      const el = document.getElementById("allitems");
-      data.forEach((item) => {
-        arr.forEach((game) => {
-          if (item.GameAndFormat.includes(game) || item.Date.includes(game)) {
-            const template = document.getElementById("item");
-            const clone = template.content.cloneNode(true);
-            const div = clone.querySelector("div");
-            const a = clone.querySelector("a");
-            a.href = item.Link;
-            const allP = clone.querySelectorAll("p");
-            allP[0].textContent = item.Date;
-            allP[1].textContent = item.GameAndFormat;
-            allP[2].textContent = item.PrizeFund;
-            allP[3].textContent = item.StartTime;
-            const site = clone.getElementById("site");
-            site.textContent = item.Name;
-            el.appendChild(clone);
+      arr.forEach((item) => {
+        data.forEach((item2) => {
+          if (item2.GameAndFormat.includes(item) || item2.Date.includes(item)) {
+            setRenderData((prev) => [...prev, item2]);
           }
         });
       });
@@ -86,76 +55,76 @@ function Filter() {
   }
 
   return (
-    <div class="flex flex-col items-center h-screen w-screen bg-gray-800">
-      <div>
-        <a class="flex justify-center" href="/">
-          <div class="text-white">Турнирленд</div>
-        </a>
-      </div>
-      <div class="container flex h-full">
-        <div class="bg-red-200 w-1/3 flex-grow">
-          <div class="flex justify-center">
-            <h1 class="text-3xl">Фильтры</h1>
-          </div>
-          <div>
-            <div
-              id="filters"
-              class="flex flex-wrap items-center gap-2 border border-red-300 py-2"
-            >
-                {allGamesArr.map((item) => {
-                    return (
-                        <label class="flex gap-2 justify-center items-center bg-green-500 rounded-full px-1">
-                        <input
-                            type="checkbox"
-                            class="filter"
-                            value={item}
-                            onChange={checkedsFilters}
-                        />
-                        {item}
-                        </label>
-                    );
-                })}
-            </div>
-            <div
-              id="datefilters"
-              class="flex flex-wrap items-center gap-2 border-b border-b-red-300 py-2"
-            >
-                {allDatesArr.map((item) => {
-                    return (
-                        <label class="flex gap-2 justify-center items-center bg-green-500 rounded-full px-1">
-                        <input
-                            type="checkbox"
-                            class="datefilter"
-                            value={item}
-                            onChange={checkedsFilters}
-                        />
-                        {item}
-                        </label>
-                    );
-                })}
-            </div>
+    <div class="flex flex-col items-center w-11/12">
+      {/* <div className="bg-black px-3 py-0.5 rounded-2xl my-3" style={{background: "rgba(0,0,0,.3)"}}>
+          <h1 class="text-3xl">Фильтры</h1>
+        </div> */}
+      <div className="flex flex-col items-center mt-3">
+      <div className="relative px-3 py-0.5 w-16 h-10">
+          <div className="absolute left-0 top-2 bg-black blur w-20 h-8"></div>
+          <h1 class="absolute text-2xl">Игры</h1>
+        </div>
+        <div className="flex justify-start w-full">
+          <div id="filters" class="flex flex-wrap items-center gap-2 py-2">
+            {allGamesArr.map((item) => {
+              return (
+                <label class="flex gap-2 justify-center items-center bg-red-800 rounded-full px-1">
+                  <input
+                    type="checkbox"
+                    class="filter"
+                    value={item}
+                    onChange={checkedsFilters}
+                  />
+                  {item}
+                </label>
+              );
+            })}
           </div>
         </div>
-        <div class="flex flex-col w-2/3 bg-green-600 overflow-y-auto">
-          <div class="flex justify-center">
-            <h1 class="text-2xl w-10">Турниры</h1>
+        <div className="relative px-3 py-0.5 w-16 h-10">
+          <div className="absolute left-0 top-2 bg-black blur w-20 h-8"></div>
+          <h1 class="absolute text-2xl">Дата</h1>
+        </div>
+        <div className="flex justify-start w-full">
+          <div id="datefilters" class="flex flex-wrap items-center gap-2 py-2">
+            {allDatesArr.map((item) => {
+              return (
+                <label class="flex gap-2 justify-center items-center bg-red-800 rounded-full px-1">
+                  <input
+                    type="checkbox"
+                    class="datefilter"
+                    value={item}
+                    onChange={checkedsFilters}
+                  />
+                  {item}
+                </label>
+              );
+            })}
           </div>
-          <div id="allitems" class="flex flex-col gap-2">
-            {
-                data.map((item) => {
-                    return (
-                        <div class="flex flex-col gap-2 bg-blue-200 p-2 rounded-md">
-                        <a href={item.Link}>
-                            <p>{item.Date}</p>
-                            <p>{item.GameAndFormat}</p>
-                            <p>{item.PrizeFund}</p>
-                            <p>{item.StartTime}</p>
-                            <p id="site">{item.Name}</p>
-                        </a>
-                        </div>
-                    );
-                })   
-            }
+        </div>
+      </div>
+      <div class="container flex justify-center h-full">
+        <div class="flex flex-col w-full justify-center">
+          <div class="flex justify-center mb-1">
+          <div className="relative ml-4 px-3 py-0.5 w-32 h-10">
+          <div className="absolute left-0 top-2 bg-black blur w-32 h-8 opacity-70"></div>
+          <h1 class="absolute text-2xl">Турниры</h1>
+        </div>
+          </div>
+          <div id="allitems" class="flex flex-col gap-3">
+            {renderData.map((item) => {
+              return (
+                <div class="flex flex-col gap-2 bg-gray-800 p-2 rounded-xl">
+                  <a href={item.Link}>
+                    <h1 className="text-2xl">{item.GameAndFormat}</h1>
+                    <p>{item.Date}</p>
+                    <p>{item.StartTime}</p>
+                    <p>{item.PrizeFund}</p>
+                    <p id="site">{item.Name}</p>
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

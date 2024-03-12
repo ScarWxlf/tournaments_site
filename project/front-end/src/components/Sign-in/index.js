@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import image from "../../assets/06.jpg";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -17,36 +18,32 @@ function SignIn() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = {
       username: data.username,
       password: data.password,
     };
-    //http://ec2-13-53-121-204.eu-north-1.compute.amazonaws.com/api/login or /api/login
-    axios
-      .get(
-        `http://localhost:3004/users?username=${userData.username}&password=${userData.password}`
+    await axios
+      .post(
+        `http://localhost:3004/login`, userData,
       )
       .then((response) => {
-        console.log(response.data);
-        if(response.data.length > 0){
-          localStorage.setItem("userID", JSON.stringify(response.data[0].id));
-          navigate("/");
-          window.location.reload();
+        if(response.data === "No users found"){
+          alert("No users found");
+          return;
         }
-        else{
-          alert("Wrong username or password");
-        }
-        
+        localStorage.setItem("user", response.data[0].id);
+        navigate("/");
+        window.location.reload();
       });
   };
 
   return (
-    <div className="flex flex-grow items-center justify-center">
+    <div className="flex flex-grow items-center justify-center" style={{ backgroundImage: `url(${image})` }}>
       <div className="container items-center flex flex-col mb-32">
         <form
-          className="flex flex-col justify-center items-center gap-8 py-4 px-8 border-black border-2 rounded-md border-opacity-20"
+          className="flex flex-col justify-center items-center bg-white gap-8 py-4 px-8 border-black border-2 rounded-md border-opacity-20"
           onSubmit={handleSubmit}
         >
           <h1>Login</h1>
