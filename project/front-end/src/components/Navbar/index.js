@@ -8,10 +8,18 @@ import {
 } from "@material-tailwind/react";
 import { Outlet } from "react-router-dom";
 import image from "../../assets/06.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
   const [userID] = React.useState(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    navigate("/sign-in");
+    window.location.reload();
+  };
 
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -76,25 +84,93 @@ export default function NavbarDefault() {
           Форум
         </a>
       </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <button
+                className="bg-red-800 rounded-xl px-2 mt-1"
+                onClick={handleLogOut}
+              >
+                Log out
+              </button>
+      </Typography>
     </ul>
   );
 
   return (
     <>
-      <Navbar className="mx-auto max-w-screen-xxl rounded-none border-none bg-gradient-to-r from-blue-950 to-blue-400 text-white px-4 py-2 lg:px-8 lg:py-4">
+      <Navbar className="mx-auto max-w-screen-xxl object-cover rounded-none border-none text-white px-4 py-2 lg:px-8 lg:py-4" style={{ backgroundImage: `url(${image})`, backgroundPosition: "0px -72px", backgroundSize:"cover"}}>
+    
         <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
             href="/"
-            className="mr-4 cursor-pointer py-1.5 font-medium px-10 text-red-600"
+            className="flex items-center gap-2 mr-4 cursor-pointer py-1.5 font-medium px-10 text-white text-2xl"
           >
-            Tournaments
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-award"
+              viewBox="0 0 16 16"
+            >
+              <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z" />
+              <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
+            </svg>
+            Cybertour
           </Typography>
-          {userID ? (
+            {userID ? (
             <div className="hidden lg:block">{navList}</div>
           ) : (
             <>
               <div className="flex items-center gap-x-1">
+              <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-globe-americas"
+          viewBox="0 0 16 16"
+        >
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
+        </svg>
+        <a href="/map" className="flex items-center">
+          Карта
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-calendar-date"
+          viewBox="0 0 16 16"
+        >
+          <path d="M6.445 11.688V6.354h-.633A13 13 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23" />
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+        </svg>
+        <a href="/tournaments" className="flex items-center">
+          Турниры
+        </a>
+      </Typography>
+      </ul>
                 {/* {auth ? (
             <Button>
               <span>Profile</span>

@@ -10,7 +10,7 @@ function Body() {
         <div className="relative flex justify-center">
           <img
             className="object-cover w-full opacity-50"
-            style={{ height: "82vh"}}
+            style={{ height: "81vh"}}
             src={image}
             alt="Welcome"
           />

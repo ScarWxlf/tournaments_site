@@ -1,21 +1,15 @@
 import React from "react";
 import image from "../../assets/06.jpg";
-import { useNavigate } from "react-router-dom";
 
 function Body() {
-  const colors = ["bg-red-800", "bg-blue-800", "bg-green-800"];
-  const [messages, setMessages] = React.useState([{ message: "Hello", user: "John" }, { message: "Hi", user: "Anne" }, { message: "How are you?", user: "John" }, { message: "I'm fine", user: "Anne" }, { message: "Good to hear", user: "John" }]);
-  const navigate = useNavigate();
+  const colors = ["bg-red-800", "bg-blue-800", "bg-green-800", "bg-yellow-800", "bg-purple-800", "bg-pink-800", "bg-indigo-800", "bg-gray-800"];
+  const [messages, setMessages] = React.useState(
+    [{ message: "Hello", user: "John", color: "bg-red-800" }, { message: "Hi", user: "I", color: "bg-blue-800" }, { message: "How are you?", user: "John", color: "bg-red-800" }, { message: "I am fine", user: "I", color: "bg-blue-800" }]);
 
-  const handleLogOut = () => {
-    localStorage.removeItem("user");
-    navigate("/sign-in");
-    window.location.reload();
-  };
 
   const handleSendMessage = () => {
     const message = document.getElementById("message").value;
-    setMessages([...messages, { message: message, user: "I" }]);
+    setMessages([...messages, { message: message, user: "I", color: colors[Math.floor(Math.random() * colors.length)]}]);
     document.getElementById("message").value = "";
   }
 
@@ -25,7 +19,7 @@ function Body() {
       style={{ backgroundImage: `url(${image})` }}
     >
       <div className="relative flex flex-grow flex-col justify-center h-full items-center">
-        <div className="absolute flex bg-gray-500 w-full h-full flex-col items-center opacity-50"></div>
+        <div className="absolute flex  w-full h-full flex-col items-center opacity-50"></div>
         <div className="absolute flex items-end h-full w-11/12 bg-gray-900 rounded-sm"></div>
         <div className="absolute flex items-end h-full w-11/12 border border-white rounded-sm">
           <div className="flex flex-col items-end gap-2 justify-center mx-2 w-screen h-full">
@@ -35,7 +29,7 @@ function Body() {
                   <div className="flex items-center gap-2 w-full h-16 ps-2">
                     <div
                       className={`flex justify-center items-center w-10 h-10 rounded-full ${
-                        colors[Math.floor(Math.random() * colors.length)]
+                        message.color
                       }`}
                     >
                         {message.user[0]}
@@ -46,12 +40,6 @@ function Body() {
               })}
             </div>
             <div className="flex gap-2 w-full items-center justify-center mb-1">
-              <button
-                className="bg-red-800 rounded-xl px-2 mb-1"
-                onClick={handleLogOut}
-              >
-                Log out
-              </button>
               <input
                 id="message"
                 type="text"

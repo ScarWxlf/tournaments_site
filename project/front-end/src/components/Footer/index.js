@@ -1,8 +1,9 @@
 import React from "react";
+import image from "../../assets/06.jpg";
 
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r  from-gray-800 to-blue-700 text-white py-4 px-3">
+    <footer className="bg-gray-900 text-white py-4 px-3" style={{ backgroundImage: `url(${image})`, backgroundPosition: "0px 145px", backgroundSize:"cover"}}>
       <div className="container mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full md:w-1/2 md:text-center md:mb-0 mb-8">
           <p classNameName="text-xs text-gray-400 md:text-sm">
