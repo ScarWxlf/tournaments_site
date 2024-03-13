@@ -26,23 +26,23 @@ import {
 
 function MegaMenuDefault(props) {
 
-    // const navListMenuItems = [
-    //     {
-    //       title: "UWU",
-    //       description: "Find the perfect solution for your needs.",
-    //       icon: SquaresPlusIcon,
-    //     },
-    //     {
-    //       title: "About Us",
-    //       description: "Meet and learn about our dedication",
-    //       icon: UserGroupIcon,
-    //     },
-    //     {
-    //       title: "Blog",
-    //       description: "Find the perfect solution for your needs.",
-    //       icon: Bars4Icon,
-    //     }
-    //   ];
+    const navListMenuItems = [
+        {
+          title: "UWU",
+          description: "Find the perfect solution for your needs.",
+          icon: SquaresPlusIcon,
+        },
+        {
+          title: "About Us",
+          description: "Meet and learn about our dedication",
+          icon: UserGroupIcon,
+        },
+        {
+          title: "Blog",
+          description: "Find the perfect solution for your needs.",
+          icon: Bars4Icon,
+        }
+      ];
     console.log(Bars4Icon)
  
 function NavListMenu() {
@@ -53,13 +53,9 @@ function NavListMenu() {
       <a href="#" key={key}>
         <MenuItem className="flex items-center gap-3 rounded-lg">
           <div className="flex items-center justify-center rounded-lg !bg-blue-gray-50 p-2 ">
-            {" "}
-            {React.createElement(icon, {
-              strokeWidth: 2,
-              className: "h-6 text-gray-900 w-6",
-            })}
+            {icon}
           </div>
-          <div>
+          <div className="flex flex-col items-start">
             <Typography
               variant="h6"
               color="blue-gray"

@@ -97,7 +97,6 @@ function Filter() {
           <h1 class="text-3xl">Фильтры</h1>
         </div> */}
       <div className="flex flex-col items-center mt-3">
-      <MegaMenuDefault  navListMenuItems={navListMenuItems}/>
       <div className="relative px-3 py-0.5 w-16 h-10">
           <div className="absolute left-0 top-2 bg-black blur w-20 h-8"></div>
           <h1 class="absolute text-2xl">Игры</h1>
@@ -167,6 +166,7 @@ function Filter() {
           </div>
         </div>
       </div>
+      <MegaMenuDefault  navListMenuItems={navListMenuItems}/>
     </div>
   );
 }
