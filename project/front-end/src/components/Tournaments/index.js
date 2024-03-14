@@ -13,7 +13,7 @@ function Body() {
     >
       <div className="flex-grow flex-col justify-center">
         <div className="flex flex-col items-center mb-5">
-            <div className="flex justify-center">
+            <div className="flex justify-center w-full">
                 <Filter/>
             </div>
         </div>
