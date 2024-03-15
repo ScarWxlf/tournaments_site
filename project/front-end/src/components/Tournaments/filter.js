@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import data from "../db/data";
 // import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import data from "../../result.json";
 import MegaMenuDefault from "../GamePicker";
 import Picker from "../DataPicker";
+import { set } from "date-fns";
 
 function Filter() {
   const allGamesArr = [
@@ -536,12 +537,14 @@ function Filter() {
   ];
 
   const [date, setDate] = useState("");
+  const [game, setGame] = useState("");
+  const [emptyText, setEmptyText] = useState(false);
+  const [allDatesArr, setAllDatesArr] = useState([]);
 
-  const allDatesArr = [];
   data.forEach((item) => {
     const date = item.Date.split(" ")[0];
     if (!allDatesArr.includes(date)) {
-      allDatesArr.push(date);
+      setAllDatesArr((prev) => [...prev, date]);
     }
   });
 
@@ -554,52 +557,82 @@ function Filter() {
     };
   });
 
-  function checkDate(uwu) {
-    setDate(uwu);
+  function setNewDate(newDate) {
+    setDate((prevValue)=>{
+      if(prevValue === newDate.toLocaleDateString()){
+        return "";
+      }else{
+        return newDate.toLocaleDateString();
+      }
+    });
+    checkedsFilters();
   }
 
+  function setNewGame(newGame){
+    setGame((prevValue)=>{
+      if(prevValue === newGame){
+        return "";
+      }else{
+        return newGame;
+      }
+    })
+    checkedsFilters();
+  }
+
+  useEffect(() => {
+    checkedsFilters();
+  }, [date, game]);
+
   function checkedsFilters() {
-    const allFilters = document.querySelectorAll(".filter");
-    const allDateFilters = document.querySelectorAll(".datefilter");
-    console.log(allDateFilters);
-    const arr = [];
-    allFilters.forEach((item) => {
-      if (item.checked) {
-        arr.push(item.value);
-      }
-    });
-    allDateFilters.forEach((item) => {
-      if (item.checked) {
-        arr.push(item.value);
-      }
-    });
     setRenderData([]);
-    if (arr.length === 0) {
+    setEmptyText(false);
+    if(date === "" && game === ""){
       setRenderData(data);
-    } else {
-      arr.forEach((item) => {
-        data.forEach((item2) => {
-          if (item2.GameAndFormat.includes(item) || item2.Date.includes(item)) {
-            setRenderData((prev) => [...prev, item2]);
-          }
-        });
+    } else if(date === "" && game !== ""){
+      data.forEach((item) => {
+        if (item.GameAndFormat.includes(game)) {
+          setRenderData((prev) => [...prev, item]);
+        }
       });
+    } else if(date !== "" && game === ""){
+      data.forEach((item) => {
+        if (item.Date.includes(date)) {
+          setRenderData((prev) => [...prev, item]);
+        }
+      });
+    }else{
+      const newFilt = data.find((item) => item.Date.includes(date) && item.GameAndFormat.includes(game));
+      if(newFilt){
+        setRenderData([newFilt]);
+      }else{
+        setEmptyText(true);
+        setRenderData([{
+          GameAndFormat: "Нет данных",
+          Date: "",
+          StartTime: "",
+          PrizeFund: "",
+          Name: "",
+          Link: ""
+        }]);
+      }
+      
     }
+    
   }
 
   return (
     <div class="flex flex-col items-center w-11/12">
     <div className="flex flex-col w-full items-center bg-black pb-3" style={{background: "rgba(0,0,0,.6)"}}>
       <div className="px-3 py-0.5 rounded-2xl">
-        <h1 class="text-3xl">Фильтры</h1>
+        <h1 class="text-3xl shadow-xl">Фильтры</h1>
       </div>
       <div className="flex flex-col items-center mt-3 w-full">
         <div className="flex justify-center gap-4 w-full">
           <MegaMenuDefault
             navListMenuItems={navListMenuItems}
-            onChange={checkedsFilters}
+            onChange={setNewGame}
           />
-          <Picker allData={allDatesArr} filters={checkDate} />
+          <Picker allData={allDatesArr} filters={setNewDate} />
         </div>
         </div>
       </div>
@@ -609,11 +642,11 @@ function Filter() {
               <h1 class="text-2xl">Турниры</h1>
           </div>
           <div id="allitems" class="flex flex-col gap-3 w-full">
-            {renderData.map((item) => {
+            {renderData.map((item, index) => {
               return (
-                <div class="flex flex-col gap-2 bg-gray-800 p-2 rounded-xl w-full">
+                <div class="flex flex-col gap-2 bg-gray-800 p-2 rounded-xl w-full" key={index}>
                   <a href={item.Link}>
-                    <h1 className="text-2xl">{item.GameAndFormat}</h1>
+                    <h1 className={`text-2xl ${emptyText ? "text-center" : ""}`}>{item.GameAndFormat}</h1>
                     <p>{item.Date}</p>
                     <p>{item.StartTime}</p>
                     <p>{item.PrizeFund}</p>

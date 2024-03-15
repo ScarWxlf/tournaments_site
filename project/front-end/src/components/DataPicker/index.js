@@ -28,7 +28,7 @@ export default function Picker(props) {
             value={date ? format(date, "PPP") : ""}
           />
         </PopoverHandler>
-        <PopoverContent>
+        <PopoverContent >
           <DayPicker
             mode="single"
             selected={date}
@@ -55,7 +55,7 @@ export default function Picker(props) {
               day: "h-9 w-9 p-0 font-normal",
               day_range_end: "day-range-end",
               day_selected:
-                "rounded-md !bg-gray-900 text-white !hover:bg-gray-900 hover:text-white focus:bg-gray-900 focus:text-white", // по можливості змінити класс імпортент на щось інше
+                "rounded-md !from-gray-400 to-gray-900 text-white !hover:bg-gray-900 hover:text-white focus:bg-gray-900 focus:text-white", // по можливості змінити класс імпортент на щось інше
               day_outside:
                 "day-outside text-gray-500 opacity-50 aria-selected:bg-gray-500 aria-selected:text-gray-900 aria-selected:bg-opacity-10",
               day_disabled: "text-gray-500 opacity-50",
@@ -65,7 +65,7 @@ export default function Picker(props) {
               highlighted: highlightedDates,
             }}
             modifiersClassNames={{
-              highlighted: 'bg-green-600 rounded-md  hover:bg-green-500 text-white',
+              highlighted: 'bg-gradient-to-bl from-cyan-100 to-cyan-600 rounded-md  hover:from-cyan-300 hover:to-cyan-600 text-white',
             }}
             components={{
               IconLeft: ({ ...props }) => (
