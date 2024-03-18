@@ -560,7 +560,9 @@ function Filter() {
             <h1 class="text-2xl">Турниры</h1>
           </div>
           <div id="allitems" class="flex flex-col gap-3 w-full">
-            {renderData.map((item, index) => {
+            {emptyText ? <div
+                  class="flex flex-col gap-2 bg-gray-800 p-2 rounded-xl w-full justify-center items-center"
+                >Нет данных<a className=" bg-red-900 px-3 py-1 rounded-lg" href="/tournaments">Сбросить Фильтры</a> </div>: renderData.map((item, index) => {
               return (
                 <div
                   class="flex gap-2 bg-gray-800 p-2 rounded-xl w-full justify-between"
