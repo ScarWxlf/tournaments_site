@@ -28,12 +28,12 @@ function Body() {
                   <div className="flex items-center gap-2 w-full h-16 ps-2" key={index}>
                     <div
                       className={`flex justify-center items-center w-10 h-10 rounded-full ${
-                        messages[messages.length - 1 - index].color
+                        message.color
                       }`}
                     >
-                        {messages[messages.length - 1 - index].user[0]}
+                        {message.user[0]}
                     </div>
-                    <p>{messages[messages.length - 1 - index].message}</p>
+                    <p>{message.message}</p>
                   </div>
                 );
               })}

@@ -28,11 +28,10 @@ app.post('/login', async (req, res) => {
         if(result.rows.length > 0){
             res.send(result.rows);
         }else{
-            res.send("No users found");
+            res.status(400).send("Неправильное имя пользователя или пароль.")
         }
     } catch (error) {
         console.log(error)
-        res.send(error)
     }
 });
 
@@ -40,11 +39,21 @@ app.post('/register', async (req, res) => {
     req.body.username;
     req.body.password;
     try {
+        const regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        const userValid = /^[A-Za-z\d]{5,20}$/;
+        if(!regex.test(req.body.password)){
+            res.status(400).send("Пароль должен содержать не менее 8 символов, включая хотя бы одну заглавную букву и одну цифру.");
+            return;
+        }
+        if(!userValid.test(req.body.username)){
+            res.status(400).send("Имя пользователя должно содержать от 5 до 20 символов.");
+            return;
+        }
         const result = await db.query(`INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *`, [req.body.username, req.body.password]);
         res.send(result.rows);
     } catch (error) {
         console.log(error)
-        res.send(error)
+        res.status(400).send("Имя пользователя уже используется." );
     }
 });
 

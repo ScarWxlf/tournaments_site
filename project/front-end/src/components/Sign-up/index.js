@@ -36,6 +36,8 @@ function SignUp() {
         localStorage.setItem("user", response.data[0].id);
         navigate("/");
         window.location.reload();
+      }).catch((error) => {
+        alert(error.response.data);
       });
   };
 

@@ -29,13 +29,11 @@ function SignIn() {
         `http://localhost:3004/login`, userData,
       )
       .then((response) => {
-        if(response.data === "No users found"){
-          alert("No users found");
-          return;
-        }
         localStorage.setItem("user", response.data[0].id);
         navigate("/");
         window.location.reload();
+      }).catch((error) => {
+        alert(error.response.data);
       });
   };
 
